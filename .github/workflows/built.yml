@@ -54,7 +54,8 @@ jobs:
 
       - name: Erros de compilação (se houver)
         if: failure()
-        run: grep -E "^e: |error:|FAILED|What went wrong" -A3 build.log | head -80 || true
+        run: |
+          grep -E "^e: |error:|FAILED|What went wrong" -A3 build.log | head -80 || true
 
       - name: Renomear
         run: cp app/build/outputs/apk/release/app-release.apk TradutorHE-PT.apk
